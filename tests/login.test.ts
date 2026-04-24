@@ -1,4 +1,5 @@
 import { chromium, test, expect } from "@playwright/test"
+import locators from "../locator/locators.json";
 
 const ltUser = process.env.LT_USERNAME;
 const ltAccessKey = process.env.LT_ACCESS_KEY;
@@ -38,12 +39,12 @@ test("Login test demo", async ({ }, testInfo) => {
     const page = await context.newPage();
 
     await page.goto("https://ecommerce-playground.lambdatest.io/")
-    await page.hover("//a[@data-toggle='dropdown']//span[contains(.,'My account')]")
+    await page.hover(locators.loginTest.myAccountMenu)
     // await page.click("text=Login")
-    await page.click("'Login'")
-    await page.fill("input[name='email']", "rudra@gmail.com")
-    await page.fill("input[name='password']", "Pass123$")
-    await page.click("input[value='Login']");
+    await page.click(locators.loginTest.loginLink)
+    await page.fill(locators.loginTest.emailInput, "rudra@gmail.com")
+    await page.fill(locators.loginTest.passwordInput, "Pass123$")
+    await page.click(locators.loginTest.loginButton);
 
     await page.close();
     await context.close();

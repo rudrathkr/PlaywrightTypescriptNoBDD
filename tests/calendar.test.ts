@@ -1,5 +1,6 @@
 import { test } from "@playwright/test";
 import moment from "moment";
+import locators from "../locator/locators.json";
 
 // test("Calendar demo using fill function", async ({ page }) => {
 //     await page.goto("https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo");
@@ -29,11 +30,11 @@ test("Calendar demo using moment", async ({ page }) => {
 
 
     async function selectDate(date: number, dateToSelect: string) {
-        await page.click("//input[@placeholder='Start date']")
+        await page.click(locators.calendarTest.startDateInput)
 
-        const mmYY = page.locator("(//table[@class='table-condensed']//th[@class='datepicker-switch'])[1]");
-        const prev = page.locator("(//table[@class='table-condensed']//th[@class='prev'])[1]");
-        const next = page.locator("(//table[@class='table-condensed']//th[@class='next'])[1]");
+        const mmYY = page.locator(locators.calendarTest.monthYearHeader);
+        const prev = page.locator(locators.calendarTest.prevButton);
+        const next = page.locator(locators.calendarTest.nextButton);
 
         // let dateToSelect: string = "May 2019";
         const thisMonth = moment(dateToSelect, "MMMM YYYY").isBefore();
@@ -45,6 +46,6 @@ test("Calendar demo using moment", async ({ page }) => {
                 await next.click();
             }
         }
-        await page.click(`//td[@class='day'][text()='${date}']`);
+        await page.click(locators.calendarTest.dayCell.replace("{{date}}", String(date)));
     }
 })

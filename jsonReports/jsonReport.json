@@ -134,12 +134,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11292,
+                  "duration": 12183,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-04-24T05:12:56.349Z",
+                  "startTime": "2026-04-24T07:18:09.809Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -149,7 +149,7 @@
           ],
           "id": "ef85df6096d4739f2c52-c75c86f66b2f7d5c395d",
           "file": "tests/login.test.ts",
-          "line": 24,
+          "line": 25,
           "column": 5
         }
       ]
@@ -157,8 +157,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-04-24T05:12:55.864Z",
-    "duration": 11807.796999999999,
+    "startTime": "2026-04-24T07:18:09.412Z",
+    "duration": 12611.029,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

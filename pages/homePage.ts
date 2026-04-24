@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import locators from "../locator/locators.json";
 
 export default class HomePage {
 
@@ -11,7 +12,7 @@ export default class HomePage {
         await Promise.all([
             this.page.waitForNavigation({ waitUntil: "networkidle" }),
             
-            this.page.click("(//span[contains(text(),'Special')]/../..)[2]")
+            this.page.click(locators.homePage.specialHotMenu)
         ])
     }
 }

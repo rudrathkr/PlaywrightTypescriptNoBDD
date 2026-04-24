@@ -1,9 +1,10 @@
 import { expect, test } from "@playwright/test"
+import locators from "../locator/locators.json";
 
 test("Interaction with inputs", async ({ page }) => {
 
     await page.goto("https://www.lambdatest.com/selenium-playground/simple-form-demo");
-    const messageInput = page.locator("input#user-message");
+    const messageInput = page.locator(locators.basicInteractionsTest.messageInput);
     await messageInput.scrollIntoViewIfNeeded();
     console.log(await messageInput.getAttribute("placeholder"));
     expect(messageInput).toHaveAttribute("placeholder", "Please enter your Message")
@@ -16,16 +17,16 @@ test("Interaction with inputs", async ({ page }) => {
 
 test("Sum", async ({ page }) => {
     await page.goto("https://www.lambdatest.com/selenium-playground/simple-form-demo");
-    const sum1input = page.locator("#sum1")
-    const sum2input = page.locator("#sum2")
+    const sum1input = page.locator(locators.basicInteractionsTest.sum1Input)
+    const sum2input = page.locator(locators.basicInteractionsTest.sum2Input)
 
-    const getValuesBtn = page.locator("//button[text()='Get values']")
+    const getValuesBtn = page.locator(locators.basicInteractionsTest.getValuesButton)
     let num1 = 121;
     let num2 = 546
     await sum1input.fill("" + num1);
     await sum2input.type("" + num2);
     await getValuesBtn.click()
-    const result = page.locator("#addmessage")
+    const result = page.locator(locators.basicInteractionsTest.resultMessage)
     console.log(await result.textContent());
     let expectedResult = num1 + num2;
     expect(result).toHaveText("" + expectedResult)
@@ -35,7 +36,7 @@ test("Sum", async ({ page }) => {
 test("Checkbox", async ({ page }) => {
 
     await page.goto("https://www.lambdatest.com/selenium-playground/checkbox-demo")
-    const singleCheckbox = page.locator("id=isAgeSelected")
+    const singleCheckbox = page.locator(locators.basicInteractionsTest.singleCheckbox)
     expect(singleCheckbox).not.toBeChecked();
     await singleCheckbox.check();
     expect(singleCheckbox).toBeChecked();

@@ -1,14 +1,15 @@
 import { test } from "@playwright/test";
+import locators from "../locator/locators.json";
 
 
 test("Download files", async ({ page }) => {
 
     await page.goto("https://www.lambdatest.com/selenium-playground/generate-file-to-download-demo");
-    await page.type("#textbox", "Like, Share, comment & subs");
-    await page.click("id=create")
+    await page.type(locators.uploadDownloadTest.downloadTextBox, "Like, Share, comment & subs");
+    await page.click(locators.uploadDownloadTest.createFileButton)
     const download = await Promise.all([
         page.waitForEvent("download"),
-        page.click("id=link-to-download")
+        page.click(locators.uploadDownloadTest.downloadLink)
     ])
     const fileName = download[0].suggestedFilename()
     await download[0].saveAs(fileName);
@@ -24,7 +25,7 @@ test.only("Upload files", async ({ page }) => {
 
     const [uploadFiles] = await Promise.all([
         page.waitForEvent("filechooser"),
-        page.click("input[type='file']")
+        page.click(locators.uploadDownloadTest.fileInput)
     ])
     const isMultiple = uploadFiles.isMultiple();
     console.log(isMultiple);

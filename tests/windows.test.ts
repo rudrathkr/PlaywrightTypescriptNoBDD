@@ -1,5 +1,6 @@
 let facebookPage: Page;
 import { expect, Page, test } from "@playwright/test";
+import locators from "../locator/locators.json";
 
 test("Interact with multiple tabs", async ({ page }) => {
 
@@ -10,7 +11,7 @@ test("Interact with multiple tabs", async ({ page }) => {
 
     const [multiPage] = await Promise.all([
         page.waitForEvent("popup"),
-        page.click("#followboth")
+        page.click(locators.windowsTest.followBothButton)
     ])
     await multiPage.waitForLoadState();
 
@@ -27,7 +28,7 @@ test("Interact with multiple tabs", async ({ page }) => {
             facebookPage = pages[index];
         }
     }
-    const text = await facebookPage.textContent("//h1")
+    const text = await facebookPage.textContent(locators.windowsTest.facebookHeading)
     console.log(text);
 
 

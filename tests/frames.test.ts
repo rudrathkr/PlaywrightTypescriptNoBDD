@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import locators from "../locator/locators.json";
 
 test("Interact with frames", async ({ page }) => {
 
@@ -6,14 +7,14 @@ test("Interact with frames", async ({ page }) => {
     const allframes = page.frames();
     console.log("No.of frames: " + allframes.length);
 
-    const frame = page.frameLocator("#firstFr")
-    await frame.locator("input[name='fname']").fill("Rudra");
-    await frame.locator("input[name='lname']").fill("Thakur");
+    const frame = page.frameLocator(locators.framesTest.outerFrame)
+    await frame.locator(locators.framesTest.firstNameInput).fill("Rudra");
+    await frame.locator(locators.framesTest.lastNameInput).fill("Thakur");
 
-    const innerFrame = frame.frameLocator("iframe[src='innerFrame']")
-    await innerFrame.locator("input[name='email']").fill("rudra@gmail.com")
+    const innerFrame = frame.frameLocator(locators.framesTest.innerFrame)
+    await innerFrame.locator(locators.framesTest.emailInput).fill("rudra@gmail.com")
 
-    await frame.locator("input[name='fname']").fill("letcode");
+    await frame.locator(locators.framesTest.firstNameInput).fill("letcode");
 
     // const myFrame = page.frame("firstFr")
     // // if (myFrame != null) {

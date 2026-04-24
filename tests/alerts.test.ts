@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import locators from "../locator/locators.json";
 
 
 test("handling alerts", async ({ page }) => {
@@ -10,14 +11,14 @@ test("handling alerts", async ({ page }) => {
         console.log(text);;
         await alert.accept("koushik");
     })
-    await page.locator("button:has-text('Click Me')").nth(2).click();
+    await page.locator(locators.alertsTest.promptButton).nth(2).click();
     // expect(page.locator("id=confirm-demo")).toContainText("Cancel!")
-    expect(page.locator("id=prompt-demo")).toContainText("'koushik'");
+    expect(page.locator(locators.alertsTest.promptResult)).toContainText("'koushik'");
 
 })
 
 test("Modal alert", async ({ page }) => {
     await page.goto("https://www.lambdatest.com/selenium-playground/bootstrap-modal-demo")
-    await page.click("//button[@data-target='#myModal']")
-    await page.click("(//button[text()='Save Changes'])[1]")
+    await page.click(locators.alertsTest.launchModalButton)
+    await page.click(locators.alertsTest.saveChangesButton)
 })

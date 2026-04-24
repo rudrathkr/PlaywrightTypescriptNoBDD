@@ -1,0 +1,89 @@
+{
+  "registerPage": {
+    "firstName": "#input-firstname",
+    "lastName": "input[name='lastname']",
+    "email": "input[name='email']",
+    "telephone": "input[name='telephone']",
+    "password": "input[name='password']",
+    "confirmPassword": "input[name='confirm']",
+    "subscribeNo": "#input-newsletter-no",
+    "agreeCheckbox": "//label[@for='input-agree']",
+    "continueButton": "input[value='Continue']"
+  },
+  "loginPage": {
+    "email": "input[name='email']",
+    "password": "input[name='password']",
+    "loginButton": "input[value='Login']"
+  },
+  "homePage": {
+    "specialHotMenu": "(//span[contains(text(),'Special')]/../..)[2]"
+  },
+  "specialHotPage": {
+    "productImage": "//div[@class='image']/a",
+    "addToCartButton": "(//button[@title='Add to Cart'])",
+    "viewCartToast": "//a[.='View Cart ']"
+  },
+  "alertsTest": {
+    "promptButton": "button:has-text('Click Me')",
+    "promptResult": "id=prompt-demo",
+    "launchModalButton": "//button[@data-target='#myModal']",
+    "saveChangesButton": "(//button[text()='Save Changes'])[1]"
+  },
+  "basicInteractionsTest": {
+    "messageInput": "input#user-message",
+    "sum1Input": "#sum1",
+    "sum2Input": "#sum2",
+    "getValuesButton": "//button[text()='Get values']",
+    "resultMessage": "#addmessage",
+    "singleCheckbox": "id=isAgeSelected"
+  },
+  "calendarTest": {
+    "startDateInput": "//input[@placeholder='Start date']",
+    "monthYearHeader": "(//table[@class='table-condensed']//th[@class='datepicker-switch'])[1]",
+    "prevButton": "(//table[@class='table-condensed']//th[@class='prev'])[1]",
+    "nextButton": "(//table[@class='table-condensed']//th[@class='next'])[1]",
+    "dayCell": "//td[@class='day'][text()='{{date}}']"
+  },
+  "dropdownTest": {
+    "singleSelect": "#select-demo",
+    "multiSelect": "#multi-select",
+    "countryDropdown": "#country+span",
+    "countryResults": "ul#select2-country-results",
+    "countryOption": "li"
+  },
+  "framesTest": {
+    "outerFrame": "#firstFr",
+    "firstNameInput": "input[name='fname']",
+    "lastNameInput": "input[name='lname']",
+    "innerFrame": "iframe[src='innerFrame']",
+    "emailInput": "input[name='email']"
+  },
+  "loginTest": {
+    "myAccountMenu": "//a[@data-toggle='dropdown']//span[contains(.,'My account')]",
+    "loginLink": "'Login'",
+    "emailInput": "input[name='email']",
+    "passwordInput": "input[name='password']",
+    "loginButton": "input[value='Login']"
+  },
+  "recordedTest": {
+    "myAccountMenu": "//a[@data-toggle='dropdown']//span[contains(.,'My account')]",
+    "loginLink": "a:has-text(\"Login\")",
+    "emailInput": "[placeholder=\"E-Mail Address\"]",
+    "passwordInput": "[placeholder=\"Password\"]",
+    "loginButton": "input:has-text(\"Login\")",
+    "editAccountInfo": "text=Edit your account information",
+    "firstNameInput": "[placeholder=\"First Name\"]",
+    "continueButton": "text=Continue",
+    "logoutLink": "span:has-text(\"Logout\")"
+  },
+  "uploadDownloadTest": {
+    "downloadTextBox": "#textbox",
+    "createFileButton": "id=create",
+    "downloadLink": "id=link-to-download",
+    "fileInput": "input[type='file']"
+  },
+  "windowsTest": {
+    "followBothButton": "#followboth",
+    "facebookHeading": "//h1"
+  }
+}
