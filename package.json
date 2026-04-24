@@ -5,7 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test --project=chrome",
-    "test:lt": "npx playwright test --project=\"chrome:latest:MacOS Catalina@lambdatest\""
+    "test:lt": "npx playwright test --project=\"chrome:latest:MacOS Catalina@lambdatest\"",
+    "docker:build": "docker build -t playwright-ts-framework .",
+    "docker:test": "docker run --rm -e HEADLESS=true playwright-ts-framework npm run test",
+    "docker:test:login": "docker run --rm playwright-ts-framework npx playwright test tests/login.test.ts --project=chrome",
+    "docker:test:lt": "docker run --rm -e LT_USERNAME -e LT_ACCESS_KEY playwright-ts-framework npm run test:lt",
+    "docker:test:artifacts": "docker run --rm -e HEADLESS=true -v \"$PWD/playwright-report:/app/playwright-report\" -v \"$PWD/test-results:/app/test-results\" -v \"$PWD/jsonReports:/app/jsonReports\" playwright-ts-framework npm run test",
+    "docker:test:login:artifacts": "npm run docker:build && docker run --rm -e HEADLESS=true -v \"$PWD/playwright-report:/app/playwright-report\" -v \"$PWD/test-results:/app/test-results\" -v \"$PWD/jsonReports:/app/jsonReports\" playwright-ts-framework npx playwright test tests/login.test.ts --project=chrome",
+    "docker:test:lt:artifacts": "docker run --rm -e HEADLESS=true -e LT_USERNAME -e LT_ACCESS_KEY -v \"$PWD/playwright-report:/app/playwright-report\" -v \"$PWD/test-results:/app/test-results\" -v \"$PWD/jsonReports:/app/jsonReports\" playwright-ts-framework npm run test:lt"
   },
   "keywords": [],
   "author": "",

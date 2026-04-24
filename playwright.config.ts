@@ -1,5 +1,7 @@
 import { devices, PlaywrightTestConfig } from '@playwright/test';
 
+const isHeadless = process.env.HEADLESS === "false" ? false : true;
+
 // const capabilities = {
 //     browserName: "Chrome", // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
 //     browserVersion: "latest",
@@ -52,7 +54,7 @@ const config: PlaywrightTestConfig = {
         //     ${encodeURIComponent(JSON.stringify(capabilities))}`
         // },
         baseURL: "https://ecommerce-playground.lambdatest.io/index.php?",
-        headless: false,
+        headless: isHeadless,
         screenshot: "on",
         video: "on",
         launchOptions: {
